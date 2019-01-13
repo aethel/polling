@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from './../../../core';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'pa-questions-list',
@@ -6,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./questions-list.component.scss']
 })
 export class QuestionsListComponent implements OnInit {
-  constructor() {}
+  questionsList$: any;
+  constructor(private dataService: DataService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.questionsList$ = this.dataService.getData();
+  }
 }
