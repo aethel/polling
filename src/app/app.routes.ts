@@ -4,7 +4,7 @@ import { Routes } from '@angular/router';
 
 const appRoutes: Routes = [
   { path: 'questionsList', component: QuestionsListComponent },
-  { path: 'questionDetails/:id', component: QuestionsDetailsComponent },
+  { path: 'questions/:id', component: QuestionsDetailsComponent },
 
   {
     path: '',

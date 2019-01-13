@@ -2,7 +2,9 @@
   <li *ngFor="let question of (questionsList$ | async)">
     <article>
       <header>
-        <h1>{{ question.question }}</h1>
+        <h1>
+          <a href="#" [routerLink]="[question.url]">{{ question.question }}</a>
+        </h1>
         <time dateTime="{{ question.published_at }}">{{
           question.published_at | date
         }}</time>
