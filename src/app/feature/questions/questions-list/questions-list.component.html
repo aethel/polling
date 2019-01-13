@@ -1,5 +1,13 @@
 <ul>
   <li *ngFor="let question of (questionsList$ | async)">
-    {{ question.question }} {{ question.published_at }}
+    <article>
+      <header>
+        <h1>{{ question.question }}</h1>
+        <time dateTime="{{ question.published_at }}">{{
+          question.published_at | date
+        }}</time>
+      </header>
+      <span>Number of choices: {{ question.choices.length }}</span>
+    </article>
   </li>
 </ul>
