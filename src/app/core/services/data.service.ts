@@ -9,15 +9,12 @@ import { catchError } from 'rxjs/operators';
 })
 export class DataService {
   constructor(private http: HttpClient) {}
+
   getData(url: string = QuestionsUrl): Observable<any> {
     return this.http.get(url).pipe(catchError(this.handleError));
   }
   getDataDetails(id: number): Observable<any> {
-    console.log(`${QuestionsUrl}/${id}`);
-
-    return this.http
-      .get(`${QuestionsUrl}/${id}`)
-      .pipe(catchError(this.handleError));
+    return this.http.get(`${QuestionsUrl}/${id}`);
   }
 
   private handleError(error: HttpErrorResponse) {

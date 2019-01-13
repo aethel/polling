@@ -18,6 +18,6 @@ export class QuestionsDetailsComponent implements OnInit {
   ngOnInit() {
     this.dataService
       .getDataDetails(this.questionId)
-      .subscribe(res => (this.question = res), err => console.log(err));
+      .subscribe(res => (this.question = res), err => console.error(err));
   }
 }
