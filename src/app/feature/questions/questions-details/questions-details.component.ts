@@ -8,15 +8,16 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./questions-details.component.scss']
 })
 export class QuestionsDetailsComponent implements OnInit {
-  question$: any;
-  constructor(
-    private dataService: DataService,
-    private route: ActivatedRoute
-  ) {}
+  private questionId: number;
+  question: object = null;
+
+  constructor(private dataService: DataService, private route: ActivatedRoute) {
+    this.questionId = +this.route.snapshot.paramMap.get('id');
+  }
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
-    //call for questions details
+    this.dataService
+      .getDataDetails(this.questionId)
+      .subscribe(res => (this.question = res), err => console.log(err));
   }
 }

@@ -1,0 +1,6 @@
+<div *ngIf="question">
+  <p>{{ question.question }}</p>
+  <span *ngFor="let choice of question.choices">
+    {{ choice.choice }} {{ choice.votes }}
+  </span>
+</div>
