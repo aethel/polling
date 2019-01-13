@@ -1,15 +1,19 @@
-<ul>
-  <li *ngFor="let question of (questionsList$ | async)">
-    <article>
-      <header>
-        <h1>
-          <a href="#" [routerLink]="[question.url]">{{ question.question }}</a>
-        </h1>
-        <time dateTime="{{ question.published_at }}">{{
-          question.published_at | date
-        }}</time>
-      </header>
-      <span>Number of choices: {{ question.choices.length }}</span>
-    </article>
-  </li>
-</ul>
+<div class="container">
+  <ul class="columns is-multiline is-mobile">
+    <li *ngFor="let question of (questionsList$ | async)" class="column is-4">
+      <article>
+        <header>
+          <h1>
+            <a href="#" [routerLink]="[question.url]">{{
+              question.question
+            }}</a>
+          </h1>
+          <time dateTime="{{ question.published_at }}">{{
+            question.published_at | date
+          }}</time>
+        </header>
+        <span>Number of choices: {{ question.choices.length }}</span>
+      </article>
+    </li>
+  </ul>
+</div>
