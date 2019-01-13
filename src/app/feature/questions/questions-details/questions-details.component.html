@@ -1,6 +1,19 @@
 <div *ngIf="question">
   <p>{{ question.question }}</p>
-  <span *ngFor="let choice of question.choices">
-    {{ choice.choice }} {{ choice.votes }}
-  </span>
+
+  <ul>
+    <li *ngFor="let choice of question.choices">
+      <span>{{ choice.choice }}</span> <span>{{ choice.votes }}</span>
+      <span>{{ getPercentage(choice.votes) }}%</span>
+      <meter
+        min="0"
+        max="100"
+        value="{{ getPercentage(choice.votes) }}"
+      ></meter>
+      <button (click)="vote(choice.url)">Vote</button>
+    </li>
+  </ul>
+</div>
+<div *ngIf="voteResult && !question">
+  {{ voteResult.choice }} {{ voteResult.votes }}
 </div>
