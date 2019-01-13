@@ -1,19 +1,26 @@
-<div *ngIf="question">
-  <p>{{ question.question }}</p>
-
+<div *ngIf="question" class="container">
+  <h1>{{ question.question }}</h1>
   <ul>
-    <li *ngFor="let choice of question.choices">
-      <span>{{ choice.choice }}</span> <span>{{ choice.votes }}</span>
-      <span>{{ getPercentage(choice.votes) }}%</span>
-      <meter
-        min="0"
-        max="100"
-        value="{{ getPercentage(choice.votes) }}"
-      ></meter>
-      <button (click)="vote(choice.url)">Vote</button>
+    <li *ngFor="let choice of question.choices" class="columns is-mobile">
+      <span class="column is-3">{{ choice.choice }}</span>
+      <span class="column is-2">{{ choice.votes }}</span>
+      <span class="column is-2">{{ getPercentage(choice.votes) }}%</span>
+      <span class="column is-3">
+        <meter
+          min="0"
+          max="100"
+          value="{{ getPercentage(choice.votes) }}"
+        ></meter>
+      </span>
+      <span class="column is-2">
+        <button class="button is-primary" (click)="vote(choice.url)">
+          Vote
+        </button>
+      </span>
     </li>
   </ul>
 </div>
-<div *ngIf="voteResult && !question">
-  {{ voteResult.choice }} {{ voteResult.votes }}
+<div *ngIf="voteResult && !question" class="container">
+  <span class="column is-2">Your choice: {{ voteResult.choice }} </span>
+  <span class="column is-2">New number of votes: {{ voteResult.votes }}</span>
 </div>
